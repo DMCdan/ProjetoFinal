@@ -14,8 +14,10 @@ st.set_page_config(page_title="Análise de Filmes - TMDb", layout="wide")
 # === Carregar os dados ===
 @st.cache_data
 def load_data():
-    movies_df = pd.read_csv('tmdb_5000_movies.csv')
-    credits_df = pd.read_csv('tmdb_5000_credits.csv', engine='python', on_bad_lines='skip')
+    url_movies = "https://drive.google.com/uc?export=download&id=17dWfqGAtdKZAR0rTCT6cv7weiIcrNycZ"
+    url_credits = "https://drive.google.com/uc?export=download&id=1hQwFfz4ZXtF9UYwiH7VEwThbg207XjRL"
+    movies_df = pd.read_csv(url_movies)
+    credits_df = pd.read_csv(url_credits, engine='python', on_bad_lines='skip')
     df = movies_df.merge(credits_df, left_on='id', right_on='movie_id')
     df = df.drop('movie_id', axis=1)
     return df
