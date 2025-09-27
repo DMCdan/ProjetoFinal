@@ -58,12 +58,13 @@ rmse = np.sqrt(mse)
 r2 = r2_score(y_test, y_pred)
 
 # === Layout com abas ===
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "📊 Visão Geral", 
     "🎬 Gêneros vs Notas", 
     "🌍 Idiomas", 
     "📈 Modelo Preditivo", 
-    "🧮 Métricas"
+    "🧮 Métricas",
+    "📌 Perguntas & Sugestões"
 ])
 
 with tab1:
@@ -114,3 +115,27 @@ with tab5:
     st.metric("RMSE", f"{rmse:.2f}")
     st.metric("R²", f"{r2:.2f}")
     st.markdown("Essas métricas indicam a qualidade da previsão feita com regressão linear.")
+
+with tab6:
+    st.title("📌 Perguntas de Negócio e Sugestões Estratégicas")
+    
+    st.subheader("🎯 Perguntas-Chave que Podemos Responder com os Dados")
+
+    st.markdown("""
+    - **Quais gêneros de filmes recebem as melhores avaliações dos usuários?**
+    - **Existe correlação entre orçamento alto e sucesso (receita)?**
+    - **Filmes com mais votos tendem a ter notas mais altas?**
+    - **Quais idiomas dominam o mercado de filmes?**
+    - **É possível prever a nota de um filme com base nos dados disponíveis?**
+    """)
+
+    st.subheader("💡 Sugestões de Negócio Baseadas nos Insights")
+    st.markdown("""
+    - **Foco em Gêneros Bem Avaliados:** Investir mais em gêneros como _Drama_ e _Documentário_ se esses apresentarem maior média de nota.
+    - **Avaliar o ROI (Retorno sobre Orçamento):** Nem sempre filmes com alto orçamento geram alta receita. Avaliar investimentos de forma mais estratégica.
+    - **Explorar Idiomas Emergentes:** Se o idioma original predominante for o inglês, explorar filmes em espanhol, coreano ou hindi pode abrir novos mercados.
+    - **Aumentar a Popularidade Antes do Lançamento:** Filmes populares tendem a receber mais votos e visualizações. Estratégias de marketing digital e influenciadores podem aumentar a popularidade antes da estreia.
+    - **Usar Modelos Preditivos para Aprovação de Projetos:** Utilize o modelo de regressão como base para prever o sucesso de futuros roteiros ou projetos.
+    """)
+
+    st.success("Essas sugestões podem servir de base para decisões de marketing, produção e investimento no setor cinematográfico.")
